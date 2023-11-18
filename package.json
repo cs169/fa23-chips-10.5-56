@@ -5,8 +5,8 @@
     "version": "0.0.1",
     "main": "babel.config.js",
     "engines": {
-        "node": "12.x || 14.x || 16.x",
-        "yarn": "1.22.x"
+        "node": "13.x",
+        "yarn": "1.19.x"
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.13.0",
@@ -29,7 +29,7 @@
         "eslint-config-airbnb-base": "^14.1.0",
         "eslint-plugin-import": "^2.20.2",
         "mapshaper": "^0.5.10",
-        "webpack-dev-server": "^3.11.0"
+        "webpack-dev-server": "^4.15.1"
     },
     "scripts": {
         "lint": "./node_modules/.bin/eslint \"app/**/*.js\" \"config/**/*.js\"",
