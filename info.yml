@@ -1,0 +1,24 @@
+project:
+  name: 'CS169-fa23-56'
+  owner: 'fa23'
+  teamId: '56'
+  identities: {}
+  notifications:
+    email: 'andrew.cheng@berkeley.edu'
+  members:
+    member1:
+      name: 'Alison'
+      surname: 'Siebert' 
+      githubUsername: 'asieb18'
+    member2:
+      name: 'Chen'
+      surname: 'Cheng' 
+      githubUsername: 'ischencheng'
+    member3:
+      name: 'Bryan'
+      surname: 'Zhang' 
+      githubUsername: 'bryanzhang'
+    member4:
+      name: 'Leah'
+      surname: 'Wang' 
+      githubUsername: 'leah-wang61'
