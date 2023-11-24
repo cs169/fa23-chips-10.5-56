@@ -4,6 +4,7 @@ project:
   teamId: '56'
   identities: {}
   notifications:
+<<<<<<< HEAD
     email: 'leahwang61@berkeley.edu'
   members:
     member1:
@@ -12,13 +13,31 @@ project:
       githubUsername: 'leah-wang61'
     member2:
       name: 'Andrew'
+=======
+    email: 'andrew.cheng@berkeley.edu'
+  members:
+    member1:
+      name: 'Alison'
+      surname: 'Siebert' 
+      githubUsername: 'asieb18'
+    member2:
+      name: 'Chen'
+>>>>>>> 5bdcc1d2980ea5fc5c75f4a6e533b7f5a89bbe39
       surname: 'Cheng' 
       githubUsername: 'ischencheng'
     member3:
       name: 'Bryan'
       surname: 'Zhang' 
+<<<<<<< HEAD
       githubUsername: 'bryanyzhang'
     member4:
       name: 'Alison'
       surname: 'Siebert' 
       githubUsername: 'asieb18'
+=======
+      githubUsername: 'bryanzhang'
+    member4:
+      name: 'Leah'
+      surname: 'Wang' 
+      githubUsername: 'leah-wang61'
+>>>>>>> 5bdcc1d2980ea5fc5c75f4a6e533b7f5a89bbe39

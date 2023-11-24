@@ -12,6 +12,9 @@ political events in their area as well as aggregate, share and view news items i
 
 [![Bluejay Dashboard](https://img.shields.io/badge/Bluejay-Dashboard_56-blue.svg)](http://dashboard.bluejay.governify.io/dashboard/script/dashboardLoader.js?dashboardURL=https://reporter.bluejay.governify.io/api/v4/dashboards/tpa-CS169-2023-GH-cs169_fa23-chips-10.5-56/main)
 
+![](https://github.com/CS169/fa23-chips-10.5-56/actions/workflows/specs.yml/badge.svg)
+[![Bluejay Dashboard](https://img.shields.io/badge/Bluejay-Dashboard_56-blue.svg)](http://dashboard.bluejay.governify.io/dashboard/script/dashboardLoader.js?dashboardURL=https://reporter.bluejay.governify.io/api/v4/dashboards/tpa-CS169-2023-GH-cs169_fa23-chips-10.5-56/main)
+
 [![All Specs](https://github.com/saasbook/hw-agile-iterations/actions/workflows/specs.yml/badge.svg)](https://github.com/saasbook/hw-agile-iterations/actions/workflows/specs.yml)
 
 [![codecov](https://codecov.io/gh/saasbook/hw-agile-iterations/branch/master/graph/badge.svg?token=SGYCvQX4Us)](https://codecov.io/gh/saasbook/hw-agile-iterations)
