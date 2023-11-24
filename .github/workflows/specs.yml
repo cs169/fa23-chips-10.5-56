@@ -12,8 +12,8 @@ jobs:
       matrix:
         os:
           - ubuntu-22.04
-      env:
-        RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+    env:
+      RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
     steps:
       - name: Cache multiple paths
         uses: actions/cache@v2
