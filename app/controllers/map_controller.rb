@@ -23,6 +23,7 @@ class MapController < ApplicationController
     @county = get_requested_county @state.id
     handle_county_not_found && return if @county.nil?
 
+    Rails.logger.debug 'aaaaaaaaaa'
     redirect_to search_representatives_path address: @county.name
   end
 
