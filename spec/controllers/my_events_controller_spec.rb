@@ -72,27 +72,31 @@ RSpec.describe MyEventsController, type: :controller do
     context 'with valid params' do
       let(:new_attributes) { { name: 'New Event Name' } }
 
-      it 'updates the requested event' do
+      before do
         put :update, params: { id: event.id, event: new_attributes }
+      end
+
+      it 'updates the requested event' do
         event.reload
         expect(event.name).to eq('New Event Name')
       end
 
       it 'redirects to the event list' do
-        put :update, params: { id: event.id, event: new_attributes }
         expect(response).to redirect_to(events_path)
       end
     end
 
     context 'with invalid params' do
-      it 'does not update the event' do
+      before do
         put :update, params: { id: event.id, event: invalid_attributes }
+      end
+
+      it 'does not update the event' do
         event.reload
         expect(event.name).not_to eq('')
       end
 
       it 're-renders the "edit" template' do
-        put :update, params: { id: event.id, event: invalid_attributes }
         expect(response).to render_template(:edit)
       end
     end
