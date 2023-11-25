@@ -4,7 +4,7 @@ Feature: display representatives when clicking on a county
   So that I can get all the representatives in the county
   I want to click on a county 
 
-Background: Already on a state page
+Background: The user has been on the state page
 
   Given initialized states as follows:
     | name       | symbol | fips_code | is_territory | lat_min     | lat_max     | long_min  | long_max    |
@@ -16,8 +16,7 @@ Background: Already on a state page
     | Yolo County     | 113       | B          |
     | Yuba County     | 115       | C          |
 
-
-  And I am on the California state page
+  And I am on the state CA page
 
   Scenario: Search representatives in county
   And I follow "View"
