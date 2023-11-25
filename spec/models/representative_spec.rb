@@ -48,4 +48,35 @@ RSpec.describe Representative, type: :model do
       end
     end
   end
+
+  describe 'NewsItem.find_for' do
+    let!(:representative) do
+      described_class.create!(
+        name:  'Chen Cheng',
+        ocdid: '123',
+        title: 'Mayor'
+      )
+    end
+
+    context 'when news items exist for the given representative' do
+      let!(:news_item) do
+        NewsItem.create!(
+          representative: representative,
+          title:          'ABC',
+          link:           'https://abc.com/news',
+          description:    'description'
+        )
+      end
+
+      it 'returns the news item' do
+        expect(NewsItem.find_for(representative.id)).to eq(news_item)
+      end
+    end
+
+    context 'when no news items exist for the given representative' do
+      it 'returns nil' do
+        expect(NewsItem.find_for(representative.id)).to be_nil
+      end
+    end
+  end
 end
