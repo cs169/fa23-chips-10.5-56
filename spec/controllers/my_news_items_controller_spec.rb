@@ -26,13 +26,6 @@ RSpec.describe MyNewsItemsController, type: :controller do
     end
   end
 
-  describe 'GET #edit' do
-    it 'assigns the requested news_item as @news_item' do
-      get :edit, params: { id: news_item.id, representative_id: representative.id }
-      expect(assigns(:news_item)).to eq(news_item)
-    end
-  end
-
   describe 'PUT #update' do
     context 'with valid params' do
       it 'updates the requested news_item' do
@@ -44,6 +37,13 @@ RSpec.describe MyNewsItemsController, type: :controller do
       it 'redirects to the news_item' do
         put :update, params: { id: news_item.id, news_item: valid_attributes, representative_id: representative.id }
         expect(response).to redirect_to(representative_news_item_path(representative, news_item))
+      end
+    end
+
+    describe 'GET #edit' do
+      it 'assigns the requested news_item as @news_item' do
+        get :edit, params: { id: news_item.id, representative_id: representative.id }
+        expect(assigns(:news_item)).to eq(news_item)
       end
     end
 
