@@ -24,6 +24,10 @@ module NavigationHelpers
     when /^the state CA page$/
       '/state/CA'
 
+    when /^the Alameda County page$/
+      '/state/CA/county/001' 
+
+
     else
       begin
         page_name =~ /^the (.*) page$/
