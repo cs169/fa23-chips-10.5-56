@@ -27,7 +27,7 @@ class Representative < ApplicationRecord
         state:    address&.state,
         zip:      address&.zip,
         party:    official.party,
-        photo:    official.photo_url
+        photo:    official.urls[0],
       )
       rep.save
 
