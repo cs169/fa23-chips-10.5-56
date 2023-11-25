@@ -27,7 +27,7 @@ class Representative < ApplicationRecord
         state:    address&.state,
         zip:      address&.zip,
         party:    official.party,
-        photo:    official.urls[0],
+        photo:    official.urls.present? ? official.urls[0] : nil
       )
       rep.save
 

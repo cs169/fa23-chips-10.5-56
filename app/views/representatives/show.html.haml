@@ -2,7 +2,7 @@
 %html
   %head
     %title= @representative.name
-    %link{href: "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css", rel: "stylesheet"}
+    %link{ href: 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', rel: 'stylesheet' }
 
   %body
     .container
@@ -10,7 +10,7 @@
         .col-md-12
           %h1= @representative.name
           - if @representative.photo.present?
-            %img{src: @representative.photo, alt: @representative.name, class: "img-fluid rounded"}
+            %img{ src: @representative.photo, alt: @representative.name, class: 'img-fluid rounded' }
 
           %h3 Information
           .table-responsive
