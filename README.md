@@ -8,6 +8,9 @@ political events in their area as well as aggregate, share and view news items i
 </div>
 
 <!-- TODO: Update these for your repo! -->
+![](https://github.com///actions/workflows//badge.svg)
+
+[![Bluejay Dashboard](https://img.shields.io/badge/Bluejay-Dashboard_56-blue.svg)](http://dashboard.bluejay.governify.io/dashboard/script/dashboardLoader.js?dashboardURL=https://reporter.bluejay.governify.io/api/v4/dashboards/tpa-CS169-2023-GH-cs169_fa23-chips-10.5-56/main)
 
 [![Bluejay Dashboard](https://img.shields.io/badge/Bluejay-Dashboard_56-blue.svg)](http://dashboard.bluejay.governify.io/dashboard/script/dashboardLoader.js?dashboardURL=https://reporter.bluejay.governify.io/api/v4/dashboards/tpa-CS169-2023-GH-cs169_fa23-chips-10.5-56/main)
 
