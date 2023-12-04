@@ -37,6 +37,12 @@ class MyNewsItemsController < SessionController
                 notice: 'News was successfully destroyed.'
   end
 
+  def search
+    @representative = params[:representative_id]
+    @issue = params[:issue]
+    render :new_2
+  end
+
   private
 
   def set_representative
