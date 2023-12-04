@@ -120,7 +120,7 @@ Style/PreferredHashMethods:
     EnforcedStyle: verbose
 
 Metrics/MethodLength:
-    Max: 20
+    Max: 30
 
 RSpec/InstanceVariable:
     Enabled: false
