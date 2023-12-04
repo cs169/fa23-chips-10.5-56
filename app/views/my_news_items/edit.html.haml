@@ -4,11 +4,11 @@
 
     .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
         = render 'form', news_item: @news_item,
-         form_url: representative_edit_my_news_item_path(@representative, @news_item),
-         form_method: :put,
-    representatives_list: @representatives_list
-    issues_list: NewsItem::ISSUES_LIST
-
+        form_url: representative_edit_my_news_item_path(@representative, @news_item),
+        form_method: :put,
+        representatives_list: @representatives_list,
+        issues_list: @issues_list
+      
     .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
         .clearfix.mt-3
             .float-right
@@ -18,3 +18,5 @@
                 = link_to representative_news_items_path(@representative), class: 'mx-1 btn btn-info' do
                     View all news articles
                     %i.fas.fa-arrow-right
+
+

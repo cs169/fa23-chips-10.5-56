@@ -1,7 +1,7 @@
 .container-fluid.py-5
     .row
         .col-md-8.offset-md-2
-            %h1.text-center Listing News Articles for #{@representative.name}
+            %h1.text-center Listing News Articles for #{link_to @representative.name, representative_path(@representative.id)}
             .clearfix.my-4
                 .float-right
                     = link_to representative_new_my_news_item_path(@representative), class: 'mx-1 btn btn-primary' do
@@ -12,7 +12,7 @@
                         All Representatives
             .table-responsive-md
                 %table.table.table-striped.table-hover#events
-                    %caption Table of News Items for #{@representative.name}
+                    %caption Table of News Items for #{link_to @representative.name, representative_path(@representative.id)}
                     %thead.thead-dark
                         %tr
                             %th #
@@ -31,9 +31,9 @@
                                         &nbsp;
                                         %i.fas.fa-external-link-alt
                                 %td= item.description
-                                %td= item.issue
                                 %td
                                     %time.timeago{ datetime: item.created_at.iso8601 }
+                                %td= item.issue
                                 %td
                                     = link_to representative_news_item_path(item.representative.id, item.id),
                                     class: 'btn btn-info' do
@@ -46,3 +46,4 @@
                                     = link_to representative_news_item_path(item.representative.id, item.id),
                                     method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' do
                                         %i.fas.fa-trash &nbsp;Delete
+                                        
