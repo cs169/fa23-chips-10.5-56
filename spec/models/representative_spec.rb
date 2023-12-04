@@ -13,10 +13,6 @@ RSpec.describe Representative, type: :model do
     let(:office) { OpenStruct.new(name: 'Mayor', division_id: '123', official_indices: [0]) }
     let(:rep_info) { OpenStruct.new(officials: [official], offices: [office]) }
 
-    after do
-      DatabaseCleaner.clean
-    end
-
     context 'when the representative does not exist' do
       it 'creates a new representative' do
         expect do
