@@ -8,6 +8,7 @@ RSpec.describe NewsItemsController, type: :controller do
     NewsItem.create!(
       title:          'News 1',
       link:           'http://news1.com/hahaha',
+      issue:          'Climate Change',
       representative: representative
     )
   end
@@ -15,6 +16,7 @@ RSpec.describe NewsItemsController, type: :controller do
     NewsItem.create!(
       title:          'News 2',
       link:           'http://news2.com/hehehe',
+      issue:          'Immigration',
       representative: representative
     )
   end

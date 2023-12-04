@@ -5,14 +5,26 @@ require 'rails_helper'
 RSpec.describe MyNewsItemsController, type: :controller do
   let!(:representative) { Representative.create!(name: 'Leah Wang') }
   let!(:news_item) do
-    NewsItem.create!(title: 'Sample News', description: 'Sample Description', link: 'http://example.com',
-                     representative: representative)
+    NewsItem.create!(
+      title:          'Sample News',
+      description:    'Sample Description',
+      link:           'http://example.com',
+      issue:          'Climate Change',
+      representative: representative
+    )
   end
   let(:valid_attributes) do
-    { title: 'Updated News', description: 'Updated Description', link: 'http://example.com',
-   representative_id: representative.id }
+    {
+      title:             'Updated News',
+      description:       'Updated Description',
+      link:              'http://example.com',
+      issue:             'Immigration',
+      representative_id: representative.id
+    }
   end
-  let(:invalid_attributes) { { title: '', description: '', link: '', representative_id: nil } }
+  let(:invalid_attributes) do
+    { title: '', description: '', link: '', issue: '', representative_id: nil }
+  end
 
   before do
     user = User.create!(provider: 1, uid: '123456789', email: 'test@example.com', first_name: 'Test', last_name: 'User')
@@ -32,6 +44,7 @@ RSpec.describe MyNewsItemsController, type: :controller do
         put :update, params: { id: news_item.id, news_item: valid_attributes, representative_id: representative.id }
         news_item.reload
         expect(news_item.title).to eq('Updated News')
+        expect(news_item.issue).to eq('Immigration') # Test for issue update
       end
 
       it 'redirects to the news_item' do

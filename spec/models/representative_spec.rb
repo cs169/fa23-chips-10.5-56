@@ -60,7 +60,8 @@ RSpec.describe Representative, type: :model do
           representative: representative,
           title:          'ABC',
           link:           'https://abc.com/news',
-          description:    'description'
+          description:    'description',
+          issue:          'Abortion'
         )
       end
 
