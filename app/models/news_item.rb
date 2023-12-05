@@ -18,13 +18,13 @@ class NewsItem < ApplicationRecord
 
   # returns list of five articles that match params
   def self.get_articles(rep_name, issue)
-    url = 'https://newsapi.org/v2/everything?' +
-      'q=#{rep_name} AND #{issue}&' +
-      'pageSize=5&' +
-      'sort_by=relevancy&'
-      'apiKey=#{Rails.application.credentials[:NEWS_API_KEY]}'
+    uri = "https://newsapi.org/v2/everything?" +
+      "q=#{rep_name} AND #{issue}&" +
+      "pageSize=5&" +
+      "sort_by=relevancy&"
+      "apiKey=#{Rails.application.credentials[:NEWS_API_KEY]}"
 
-    response = Faraday.get(url)
+    response = Faraday.get(uri)
     json = JSON.parse(response.body)
     articles = json['articles']
   end
