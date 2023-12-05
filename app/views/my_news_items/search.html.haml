@@ -3,10 +3,27 @@
         %h1.text-center Edit News Item
 
     .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
+        Representative: 
+        <!-- todo: hyperlink representative profile -->
+        %a{ href: /representatives/ } 
+        = @representative.name
+        %br
+        Issue:
+        = @issue
+        %br
+        Select an article:
+
+        - if @articles.present?
+            - @articles.each_with_index do |article, _index| 
+                <!-- todo: add/format radio button and top five articles -->
+                .radio
+                Title:
+                Link:
+                Description:
+
+    .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
         .clearfix.mt-3
             .float-right
                 = link_to representative_news_items_path(@representative), class: 'btn btn-info' do
                     View news articles
                     %i.fas.fa-arrow-right
-
-

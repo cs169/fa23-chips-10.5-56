@@ -12,12 +12,13 @@
             = label :news_item, :representative_id, class: 'col-form-label'
         .col-sm-10
             = select :news_item, :representative_id, representatives_list, { include_blank: true },
-            class: 'form-control'
+            class: 'form-control', required: 'required'
     .form-group.row
         .col-sm-2
             = label :news_item, :issue, 'Issue', class: 'col-form-label'
         .col-sm-10
-            = select :news_item, :issue, issues_list, { include_blank: true }, class: 'form-control'
+            = select :news_item, :issue, issues_list, { include_blank: true }, class: 'form-control', required: 'required'
     
     .actions
         = f.submit 'Search', class: 'btn btn-primary'
+        

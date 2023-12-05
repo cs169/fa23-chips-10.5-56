@@ -38,9 +38,12 @@ class MyNewsItemsController < SessionController
   end
 
   def search
-    @representative = params[:representative_id]
+    @representative = Representative.find(
+      params[:representative_id]
+    )
     @issue = params[:issue]
     render :search
+    @articles
   end
 
   private
