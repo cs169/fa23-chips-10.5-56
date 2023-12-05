@@ -44,8 +44,8 @@ class MyNewsItemsController < SessionController
     @news_item = NewsItem.new
     @representative = Representative.find(params[:representative_id])
     @issue = params[:issue]
-    @articles = NewsItem.get_articles(@representative, @issue)
-    render :search
+    @articles = NewsItem.get_articles(@representative.name, @issue)
+    #render :search
   end
 
   private
