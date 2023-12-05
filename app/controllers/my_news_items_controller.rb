@@ -40,7 +40,7 @@ class MyNewsItemsController < SessionController
   def search
     @representative = params[:representative_id]
     @issue = params[:issue]
-    render :new_2
+    render :search
   end
 
   private
@@ -67,4 +67,5 @@ class MyNewsItemsController < SessionController
   def news_item_params
     params.require(:news_item).permit(:news, :title, :description, :link, :representative_id, :issue)
   end
+
 end
