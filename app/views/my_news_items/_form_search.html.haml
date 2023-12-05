@@ -1,0 +1,31 @@
+= form_for news_item, url: form_url, html: { method: form_method } do |f|
+    - if news_item.errors.any?
+        .alert.alert-danger
+            %h2
+                "#{pluralize(news_item.errors.count, 'error')} prohibited this news from being saved:"
+            %ul
+                - news_item.errors.full_messages.each do |message|
+                    %li= message
+
+    .form-group.row
+        Representative: 
+        = link_to "#{@representative.name}", representative_path(@representative) 
+        
+    .form-group.row
+        Issue: #{@issue}
+
+    .form-group.row
+        Select an article:
+
+    .form-group.row
+        - if @articles.present?
+            - @articles.each_with_index do |article, _index| 
+                <!-- todo: add/format radio button and top five articles -->
+                .radio
+                Title: 
+                Link:
+                Description:
+
+    .actions
+        = f.submit 'Save', class: 'btn btn-primary'
+        

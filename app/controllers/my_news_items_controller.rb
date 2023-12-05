@@ -37,11 +37,15 @@ class MyNewsItemsController < SessionController
                 notice: 'News was successfully destroyed.'
   end
 
+  # sets selected rep and issue from view 1
+  # renders view 2
+  # searches for articles
   def search
+    @news_item = NewsItem.new
     @representative = Representative.find(params[:representative_id])
     @issue = params[:issue]
     render :search
-    # @articles
+    #@articles = NewsItem.get_articles(@representative, @issue)
   end
 
   private
