@@ -14,7 +14,6 @@ jobs:
           - ubuntu-22.04
     env:
       RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
-      NEWS_API_KEY: ${{ secrets.NEWS_API_KEY }}
     steps:
       - name: Cache multiple paths
         uses: actions/cache@v2
