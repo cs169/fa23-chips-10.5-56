@@ -16,5 +16,17 @@ class NewsItem < ApplicationRecord
     )
   end
 
+  def self.get_articles(rep_name, issue)
+    url = 'https://newsapi.org/v2/everything?' +
+      'q=#{rep_name} AND #{issue}&' +
+      'pageSize=5&' +
+      'sort_by=relevancy&'
+      'apiKey=#{Rails.application.credentials[:NEWS_API_KEY]}'
+
+    response = Faraday.get(url)
+    json = JSON.parse(response.body)
+    articles = json['articles']
+  end
+
   validates :issue, presence: true, inclusion: { in: ISSUES_LIST }
 end
