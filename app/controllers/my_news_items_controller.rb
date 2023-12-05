@@ -4,7 +4,7 @@ class MyNewsItemsController < SessionController
   before_action :set_representative
   before_action :set_representatives_list
   before_action :set_news_item, only: %i[edit update destroy]
-  before_action :set_issues_list, only: [:new, :edit, :create, :update]
+  before_action :set_issues_list, only: %i[new edit create update]
 
   def new
     @news_item = NewsItem.new
@@ -38,9 +38,7 @@ class MyNewsItemsController < SessionController
   end
 
   def search
-    @representative = Representative.find(
-      params[:representative_id]
-    )
+    @representative = Representative.find(params[:representative_id])
     @issue = params[:issue]
     render :search
     # @articles
@@ -70,5 +68,4 @@ class MyNewsItemsController < SessionController
   def news_item_params
     params.require(:news_item).permit(:news, :title, :description, :link, :representative_id, :issue)
   end
-
 end
