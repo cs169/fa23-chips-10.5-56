@@ -16,5 +16,9 @@ class NewsItem < ApplicationRecord
     )
   end
 
+  def self.get_articles(rep, issue)
+
+  end
+
   validates :issue, presence: true, inclusion: { in: ISSUES_LIST }
 end

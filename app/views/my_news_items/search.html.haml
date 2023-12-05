@@ -4,12 +4,9 @@
 
     .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
         Representative: 
-        <!-- todo: hyperlink representative profile -->
-        %a{ href: /representatives/ } 
-        = @representative.name
+        = link_to "#{@representative.name}", representative_path(@representative) 
         %br
-        Issue:
-        = @issue
+        Issue: #{@issue}
         %br
         Select an article:
 

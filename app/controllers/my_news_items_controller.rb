@@ -43,7 +43,7 @@ class MyNewsItemsController < SessionController
     )
     @issue = params[:issue]
     render :search
-    @articles
+    # @articles
   end
 
   private
