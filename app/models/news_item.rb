@@ -18,10 +18,6 @@ class NewsItem < ApplicationRecord
 
   # returns list of five articles that match params
   def self.get_articles(rep_name, issue)
-    # stubbing articles
-    articles = [{title: '0', url: '00000.com', description: 'world0'}, {title: '1', url: '1111.com', description: 'world1'}, {title: '2', url: '2222.com', description: '2'}, {title: '3', url: '33333.com', description: 'world3'},  {title: '4', url: '44444.com', description: 'world4'},]
-    articles
-    return
     uri = 'https://newsapi.org/v2/everything?' +
           "q=#{rep_name} AND #{issue}&" +
           "pageSize=5&" +

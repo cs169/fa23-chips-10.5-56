@@ -20,10 +20,14 @@
     .form-group.row
         - if @articles.present?
             - @articles.each_with_index do |article, index| 
-                = f.radio_button :article_index, index
-                Title: #{article['title']}
-                Link: #{article['url']}
-                Description: #{article['description']}
+                .col-md-12
+                    = radio_button_tag 'article', class: "form-check-input"
+                    Title: #{article[:title]}
+                    %br
+                    Link: #{article[:url]}
+                    %br
+                    Description: #{article[:description]}
+                    %br
 
     <!-- todo: implement/fix save button (routes?) -->
     .actions
