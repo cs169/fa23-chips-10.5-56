@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'uri'
-
 class NewsItem < ApplicationRecord
   belongs_to :representative
   has_many :ratings, dependent: :delete_all
@@ -22,7 +20,7 @@ class NewsItem < ApplicationRecord
   def self.get_articles(rep_name, issue)
     q_param = "#{rep_name} AND #{issue}"
     uri = 'https://newsapi.org/v2/everything?' \
-          "q=#{URI.encode(q_param)}&" \
+          "q=#{CGI.escape(q_param)}&" \
           'pageSize=5&' \
           'sortBy=relevancy&' \
           "apiKey=#{Rails.application.credentials[:NEWS_API_KEY]}"

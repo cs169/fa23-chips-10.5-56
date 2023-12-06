@@ -5,7 +5,10 @@
     .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
         = render 'form_search', news_item: NewsItem.new,
         form_url: representative_search_my_news_item_path(@representative),
-        form_method: :post
+        form_method: :post,
+        issue: @issue,
+        articles: @articles,
+        representative: @representative
 
     .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
         .clearfix.mt-3

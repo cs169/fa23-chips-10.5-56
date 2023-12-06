@@ -9,24 +9,27 @@
 
     .form-group.row
         Representative:
-        = link_to "#{@representative.name}", representative_path(@representative)
+        = link_to representative.name, representative_path(representative)
 
     .form-group.row
-        Issue: #{@issue}
+        Issue: #{issue}
 
     .form-group.row
         Select an article:
 
     .form-group.row
-        - if @articles.present?
-            - @articles.each_with_index do |article, _index|
+        - if articles.present?
+            - articles.each_with_index do |article, _index|
                 .col-md-12
-                    = radio_button_tag 'article', class: "form-check-input"
-                    Title: #{article[:title]}
+                    = radio_button_tag 'article', class: 'form-check-input'
+                    %strong Title:
+                    = article[:title]
                     %br
-                    Link: #{article[:url]}
+                    %strong Link:
+                    = article[:url]
                     %br
-                    Description: #{article[:description]}
+                    %strong Description:
+                    = article[:description]
                     %br
 
     <!-- todo: implement/fix save button (routes?) -->
