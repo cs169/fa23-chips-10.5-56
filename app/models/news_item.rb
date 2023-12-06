@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'uri'
 
 class NewsItem < ApplicationRecord
   belongs_to :representative
@@ -18,10 +19,10 @@ class NewsItem < ApplicationRecord
 
   # returns list of five articles that match params
   def self.get_articles(rep_name, issue)
-    uri = 'https://newsapi.org/v2/everything?' +
-          "q=#{rep_name} AND #{issue}&" +
+    q_param = "#{rep_name} AND #{issue}"
+    uri = "https://newsapi.org/v2/everything?" +
+          "q=#{URI.encode(q_param)}&" +
           "pageSize=5&" +
-          "sort_by=relevancy&" +
           "apiKey=#{Rails.application.credentials[:NEWS_API_KEY]}"
 
     response = Faraday.get(uri)

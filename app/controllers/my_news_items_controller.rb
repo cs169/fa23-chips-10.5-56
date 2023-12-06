@@ -43,8 +43,8 @@ class MyNewsItemsController < SessionController
   def search
     @representative = Representative.find(params[:news_item][:representative_id])
     @issue = params[:news_item][:issue]
-    @articles = [{title: 'article0', url: '00000.com', description: 'world0'}, {title: 'article1', url: '1111.com', description: 'world1'}, {title: 'article2', url: '2222.com', description: '2'}, {title: 'article3', url: '33333.com', description: 'world3'},  {title: 'article4', url: '44444.com', description: 'world4'}]
-    # @articles = NewsItem.get_articles(@representative.name, @issue)
+    #@articles = [{title: 'article0', url: '00000.com', description: 'world0'}, {title: 'article1', url: '1111.com', description: 'world1'}, {title: 'article2', url: '2222.com', description: '2'}, {title: 'article3', url: '33333.com', description: 'world3'},  {title: 'article4', url: '44444.com', description: 'world4'}]
+    @articles = NewsItem.get_articles(@representative.name, @issue)
     # render :search
   end
 
