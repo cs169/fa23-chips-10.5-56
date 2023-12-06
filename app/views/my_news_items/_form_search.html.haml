@@ -8,9 +8,9 @@
                     %li= message
 
     .form-group.row
-        Representative: 
-        = link_to "#{@representative.name}", representative_path(@representative) 
-        
+        Representative:
+        = link_to "#{@representative.name}", representative_path(@representative)
+
     .form-group.row
         Issue: #{@issue}
 
@@ -19,7 +19,7 @@
 
     .form-group.row
         - if @articles.present?
-            - @articles.each_with_index do |article, index| 
+            - @articles.each_with_index do |article, _index|
                 .col-md-12
                     = radio_button_tag 'article', class: "form-check-input"
                     Title: #{article[:title]}
@@ -32,4 +32,3 @@
     <!-- todo: implement/fix save button (routes?) -->
     .actions
         = f.submit 'Save', class: 'btn btn-primary'
-        
