@@ -19,13 +19,13 @@
 
     .form-group.row
         - if @articles.present?
-            - @articles.each_with_index do |article, _index| 
-                <!-- todo: add/format radio button and top five articles -->
-                .radio
-                Title: 
-                Link:
-                Description:
+            - @articles.each_with_index do |article, index| 
+                = f.radio_button :article_index, index
+                Title: #{article['title']}
+                Link: #{article['url']}
+                Description: #{article['description']}
 
+    <!-- todo: implement/fix save button (routes?) -->
     .actions
         = f.submit 'Save', class: 'btn btn-primary'
         

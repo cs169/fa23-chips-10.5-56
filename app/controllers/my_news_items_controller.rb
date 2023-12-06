@@ -41,12 +41,14 @@ class MyNewsItemsController < SessionController
   # renders view 2
   # searches for articles
   def search
-    @news_item = NewsItem.new
     @representative = Representative.find(params[:representative_id])
-    @issue = params[:issue]
+    @issue = params[:news_item][:issue]
     @articles = NewsItem.get_articles(@representative.name, @issue)
-    #render :search
+    # render :search
   end
+
+  # todo: save selected news article to database (2.4)
+  def save; end
 
   private
 
