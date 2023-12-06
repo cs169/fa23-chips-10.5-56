@@ -31,6 +31,11 @@ gem 'haml-rails'
 # Google Civic Client
 gem 'google-api-client', '~> 0.34'
 
+# News API
+gem 'news-api'
+
+gem 'faraday'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

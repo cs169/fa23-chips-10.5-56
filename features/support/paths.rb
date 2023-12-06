@@ -21,6 +21,12 @@ module NavigationHelpers
     #
     #   when /^(.*)'s profile page$/i
     #     user_profile_path(User.find_by_login($1))
+    when /^the state CA page$/
+      '/state/CA'
+
+    when /^the Alameda County page$/
+      '/state/CA/county/001' 
+
 
     else
       begin

@@ -17,8 +17,20 @@ class Representative < ApplicationRecord
         end
       end
 
-      rep = Representative.create!({ name: official.name, ocdid: ocdid_temp,
-          title: title_temp })
+      # Creating or finding the representative
+      address = official.address&.at(0)
+      rep = Representative.find_or_initialize_by(name: official.name, ocdid: ocdid_temp, title: title_temp)
+      rep.assign_attributes(
+        address1: address&.line1,
+        address2: address&.line2,
+        city:     address&.city,
+        state:    address&.state,
+        zip:      address&.zip,
+        party:    official.party,
+        photo:    official.urls.present? ? official.urls[0] : nil
+      )
+      rep.save
+
       reps.push(rep)
     end
 
