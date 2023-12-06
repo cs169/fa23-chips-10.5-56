@@ -41,7 +41,7 @@ class MyNewsItemsController < SessionController
   # renders view 2
   # searches for articles
   def search
-    @representative = Representative.find(params[:representative_id])
+    @representative = Representative.find(params[:news_item][:representative_id])
     @issue = params[:news_item][:issue]
     @articles = NewsItem.get_articles(@representative.name, @issue)
     # render :search
