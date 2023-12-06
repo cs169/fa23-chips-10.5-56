@@ -44,4 +44,8 @@ Rails.application.routes.draw do
                                                                       via: [:post]
                                                                     end
     get '/search/(:address)' => 'search#search', :as => 'search_representatives'
+
+    # Routes for Saving Articles
+    post '/save_article_rating', to: 'articles#save_rating'
+
 end
