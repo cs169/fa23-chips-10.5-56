@@ -38,15 +38,15 @@ class MyNewsItemsController < SessionController
   end
 
   # sets selected rep and issue from view 1
-  # renders view 2
-  # searches for articles
+  # queries articles
   def search
+    @news_item = NewsItem.new
     @representative = Representative.find(params[:news_item][:representative_id])
     @issue = params[:news_item][:issue]
     @articles = NewsItem.get_articles(@representative.name, @issue)
   end
 
-  # TODO: save selected news article to database (2.4)
+  # TODO: save selected news article to database
   def save; end
 
   private

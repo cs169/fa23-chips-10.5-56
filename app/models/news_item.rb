@@ -16,7 +16,7 @@ class NewsItem < ApplicationRecord
     )
   end
 
-  # returns list of (up to) five articles that match params (sorted by relevancy)
+  # returns list of (up to) five articles that match params
   def self.get_articles(rep_name, issue)
     q_param = "#{rep_name} AND #{issue}"
     uri = 'https://newsapi.org/v2/everything?' \
