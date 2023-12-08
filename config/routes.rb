@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     match '/my_events/:id', to: 'my_events#destroy', via: [:delete]
 
     # Routes for Representatives
-    resources :representatives, only: [:index]
+    resources :representatives, only: %i[index show]
     resources :representatives do
         resources :news_items, only: %i[index show]
         get '/representatives/:representative_id/my_news_item/new' => 'my_news_items#new',
@@ -38,6 +38,10 @@ Rails.application.routes.draw do
                                                                       via: %i[put patch]
         match '/representatives/:representative_id/my_news_item/:id', to:  'my_news_items#destroy',
                                                                       via: [:delete]
-    end
+        get '/representatives/:representative_id/my_news_item/search' => 'my_news_items#search',
+            :as                                                    => :search_my_news_item
+        match '/representatives/:representative_id/my_news_item/search', to:  'my_news_items#search',
+                                                                      via: [:post]
+                                                                    end
     get '/search/(:address)' => 'search#search', :as => 'search_representatives'
 end

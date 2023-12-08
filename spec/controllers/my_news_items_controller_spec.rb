@@ -4,33 +4,33 @@ require 'rails_helper'
 
 RSpec.describe MyNewsItemsController, type: :controller do
   let!(:representative) { Representative.create!(name: 'Leah Wang') }
-  let!(:news_item) { 
+  let!(:news_item) do
     NewsItem.create!(
-      title: 'Sample News', 
-      description: 'Sample Description', 
-      link: 'http://example.com', 
-      issue: 'Climate Change',
+      title:          'Sample News',
+      description:    'Sample Description',
+      link:           'http://example.com',
+      issue:          'Climate Change',
       representative: representative
-    ) 
-  }
-  let(:valid_attributes) { 
-    { 
-      title: 'Updated News', 
-      description: 'Updated Description', 
-      link: 'http://example.com', 
-      issue: 'Immigration',
-      representative_id: representative.id 
-    } 
-  }
-  let(:invalid_attributes) { 
-    { title: '', description: '', link: '', issue: '', representative_id: nil } 
-  }
+    )
+  end
+  let(:valid_attributes) do
+    {
+      title:             'Updated News',
+      description:       'Updated Description',
+      link:              'http://example.com',
+      issue:             'Immigration',
+      representative_id: representative.id
+    }
+  end
+  let(:invalid_attributes) do
+    { title: '', description: '', link: '', issue: '', representative_id: nil }
+  end
 
-  before(:each) do
+  before do
     user = User.create!(provider: 1, uid: '123456789', email: 'test@example.com', first_name: 'Test', last_name: 'User')
     session[:current_user_id] = user.id
   end
-  
+
   describe 'GET #new' do
     it 'assigns a new news_item as @news_item' do
       get :new, params: { representative_id: representative.id }
@@ -59,7 +59,7 @@ RSpec.describe MyNewsItemsController, type: :controller do
         expect(assigns(:news_item)).to eq(news_item)
       end
     end
-  
+
     context 'with invalid params' do
       it 're-renders the "edit" template' do
         put :update, params: { id: news_item.id, news_item: invalid_attributes, representative_id: representative.id }

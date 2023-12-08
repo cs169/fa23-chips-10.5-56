@@ -1,14 +1,14 @@
 .row.mt-2
     .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
         %h1.text-center Edit News Item
-        %br
 
     .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
-        = render 'form', news_item: @news_item,
+        = render 'form_search', news_item: @news_item,
         form_url: representative_search_my_news_item_path(@representative),
         form_method: :post,
-        representatives_list: @representatives_list,
-        issues_list: @issues_list
+        issue: @issue,
+        articles: @articles,
+        representative: @representative
 
     .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
         .clearfix.mt-3

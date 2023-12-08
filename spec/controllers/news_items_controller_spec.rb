@@ -4,22 +4,22 @@ require 'rails_helper'
 
 RSpec.describe NewsItemsController, type: :controller do
   let!(:representative) { Representative.create!(name: 'John Doe') }
-  let!(:news_item1) {
+  let!(:news_item1) do
     NewsItem.create!(
-      title: 'News 1', 
-      link: 'http://news1.com/hahaha', 
-      issue: 'Climate Change',
+      title:          'News 1',
+      link:           'http://news1.com/hahaha',
+      issue:          'Climate Change',
       representative: representative
     )
-  }
-  let!(:news_item2) {
+  end
+  let!(:news_item2) do
     NewsItem.create!(
-      title: 'News 2', 
-      link: 'http://news2.com/hehehe', 
-      issue: 'Immigration',
+      title:          'News 2',
+      link:           'http://news2.com/hehehe',
+      issue:          'Immigration',
       representative: representative
     )
-  }
+  end
 
   describe 'GET #index' do
     it 'assigns all news_items of a representative as @news_items' do

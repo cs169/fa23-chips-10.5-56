@@ -13,10 +13,6 @@ RSpec.describe Representative, type: :model do
     let(:office) { OpenStruct.new(name: 'Mayor', division_id: '123', official_indices: [0]) }
     let(:rep_info) { OpenStruct.new(officials: [official], offices: [office]) }
 
-    after do
-      DatabaseCleaner.clean
-    end
-
     context 'when the representative does not exist' do
       it 'creates a new representative' do
         expect do
@@ -45,6 +41,38 @@ RSpec.describe Representative, type: :model do
         representative = described_class.find_by(ocdid: '123')
         expect(representative.name).to eq('Chen Cheng')
         expect(representative.title).to eq('Mayor')
+      end
+    end
+  end
+
+  describe 'NewsItem.find_for' do
+    let!(:representative) do
+      described_class.create!(
+        name:  'Chen Cheng',
+        ocdid: '123',
+        title: 'Mayor'
+      )
+    end
+
+    context 'when news items exist for the given representative' do
+      let!(:news_item) do
+        NewsItem.create!(
+          representative: representative,
+          title:          'ABC',
+          link:           'https://abc.com/news',
+          description:    'description',
+          issue:          'Abortion'
+        )
+      end
+
+      it 'returns the news item' do
+        expect(NewsItem.find_for(representative.id)).to eq(news_item)
+      end
+    end
+
+    context 'when no news items exist for the given representative' do
+      it 'returns nil' do
+        expect(NewsItem.find_for(representative.id)).to be_nil
       end
     end
   end

@@ -4,7 +4,7 @@ class MyNewsItemsController < SessionController
   before_action :set_representative
   before_action :set_representatives_list
   before_action :set_news_item, only: %i[edit update destroy]
-  before_action :set_issues_list
+  before_action :set_issues_list, only: [:new, :edit, :create, :update]
 
   def new
     @news_item = NewsItem.new
@@ -36,6 +36,18 @@ class MyNewsItemsController < SessionController
     redirect_to representative_news_items_path(@representative),
                 notice: 'News was successfully destroyed.'
   end
+
+  # sets selected rep and issue from view 1
+  # queries articles
+  def search
+    @news_item = NewsItem.new
+    @representative = Representative.find(params[:news_item][:representative_id])
+    @issue = params[:news_item][:issue]
+    @articles = NewsItem.get_articles(@representative.name, @issue)
+  end
+
+  # TODO: save selected news article to database
+  def save; end
 
   private
 
