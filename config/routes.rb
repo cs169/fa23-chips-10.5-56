@@ -32,16 +32,18 @@ Rails.application.routes.draw do
             :as                                                    => :new_my_news_item
         match '/representatives/:representative_id/my_news_item/new', to:  'my_news_items#create',
                                                                       via: [:post]
+        get '/representatives/:representative_id/my_news_item/search' => 'my_news_items#search',
+            :as                                                    => :search_my_news_item
+        match '/representatives/:representative_id/my_news_item/search', to:  'my_news_items#search',
+                                                                    via: [:post]
+        match '/representatives/:representative_id/my_news_item/search', to:  'my_news_items#save',
+                                                                    via: [:put]
         get '/representatives/:representative_id/my_news_item/:id' => 'my_news_items#edit',
             :as                                                    => :edit_my_news_item
         match '/representatives/:representative_id/my_news_item/:id', to:  'my_news_items#update',
                                                                       via: %i[put patch]
         match '/representatives/:representative_id/my_news_item/:id', to:  'my_news_items#destroy',
                                                                       via: [:delete]
-        get '/representatives/:representative_id/my_news_item/search' => 'my_news_items#search',
-            :as                                                    => :search_my_news_item
-        match '/representatives/:representative_id/my_news_item/search', to:  'my_news_items#search',
-                                                                      via: [:post]
                                                                     end
     get '/search/(:address)' => 'search#search', :as => 'search_representatives'
 end
