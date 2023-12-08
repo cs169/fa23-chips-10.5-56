@@ -44,4 +44,11 @@ Rails.application.routes.draw do
                                                                       via: [:post]
                                                                     end
     get '/search/(:address)' => 'search#search', :as => 'search_representatives'
-end
+    
+    resources :news_items do
+      collection do
+        get :search
+        post :create
+      end
+    end
+  end
