@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_12_04_014417) do
+ActiveRecord::Schema.define(version: 2023_12_08_233248) do
 
   create_table "counties", force: :cascade do |t|
     t.string "name", null: false
@@ -41,7 +41,18 @@ ActiveRecord::Schema.define(version: 2023_12_04_014417) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "issue"
+    t.integer "rating_sum"
     t.index ["representative_id"], name: "index_news_items_on_representative_id"
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "score"
+    t.integer "user_id"
+    t.integer "news_item_id"
+    t.index ["news_item_id"], name: "index_ratings_on_news_item_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
   end
 
   create_table "representatives", force: :cascade do |t|
