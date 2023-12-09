@@ -44,17 +44,18 @@ class MyNewsItemsController < SessionController
     @representative = Representative.find(params[:representative_id])
     @issue = params[:issue]
     @articles = NewsItem.get_articles(@representative.name, @issue)
-    @news_items = articles.map do |article|
+    puts "#{@articles}"
+    @news_items = @articles.map do |article|
       NewsItem.new do |news|
         news.title = article[:title]
-        news.link = article.[:url]
+        news.link = article[:url]
         news.description = article[:description]
         news.representative_id = @representative.id
         news.issue = @issue
       end
     end
     if @news_items.empty?
-      flash.now[:error] = 'No news items available related to this topic'
+      flash.now[:error] = 'No news items available related to this issue'
       return
     end
     redirect_to representative_search_my_news_item_path(@representative)
