@@ -4,7 +4,7 @@ class MyNewsItemsController < SessionController
   before_action :set_representative
   before_action :set_representatives_list
   before_action :set_news_item, only: %i[edit update destroy]
-  before_action :set_issues_list, only: %i[new edit create update]
+  before_action :set_issues_list
 
   def new
     @news_item = NewsItem.new
@@ -13,7 +13,14 @@ class MyNewsItemsController < SessionController
   def edit; end
 
   def create
-    @news_item = NewsItem.new(news_item_params)
+    puts 
+    @news_item = NewsItem.new(
+      title:             params[:title],
+      link:              params[:link],
+      description:       params[:description],
+      issue:             params[:issue],
+      representative_id: @representative.id
+    )
     if @news_item.save
       redirect_to representative_news_item_path(@representative, @news_item),
                   notice: 'News item was successfully created.'
@@ -44,7 +51,7 @@ class MyNewsItemsController < SessionController
     @representative = Representative.find(params[:representative_id])
     @issue = params[:issue]
     @articles = NewsItem.get_articles(@representative.name, @issue)
-    
+
     @news_items = @articles.map do |article|
       NewsItem.new do |news|
         news.title = article[:title]
@@ -56,9 +63,9 @@ class MyNewsItemsController < SessionController
     end
     if @news_items.empty?
       flash.now[:error] = 'No news items available related to this issue'
+      render :new
       return
     end
-    redirect_to representative_search_my_news_item_path(@representative)
   end
 
   # TODO: save selected news article to database

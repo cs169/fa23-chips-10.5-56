@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 class NewsItem < ApplicationRecord
   belongs_to :representative
   has_many :ratings, dependent: :delete_all
@@ -18,7 +17,7 @@ class NewsItem < ApplicationRecord
 
   # returns list of (up to) five articles that match params
   def self.get_articles(rep_name, issue)
-    q_param = "#{rep_name} AND #{issue}"
+    q_param = "#{rep_name}  #{issue}"
     uri = 'https://newsapi.org/v2/everything?' \
           "q=#{CGI.escape(q_param)}&" \
           'pageSize=5&' \
@@ -28,22 +27,21 @@ class NewsItem < ApplicationRecord
     response = Faraday.get(uri)
     json = JSON.parse(response.body)
     all_articles = json['articles']
-    puts "#{all_articles}"
+
+    puts "22222222#{all_articles.length}"
 
     articles_list = []
-    num_articles = [5, all_articles.length].min
-
+    num_articles = all_articles.length
     # adds article hash to list of articles
     num_articles.times do |index|
       article = all_articles[index]
       article_hash = {
-        title:       article['title'],
-        url:         article['url'],
-        description: article['description']
+        title:       article["title"],
+        url:         article["url"],
+        description: article["description"]
       }
       articles_list[index] = article_hash
     end
-
     articles_list
   end
 
