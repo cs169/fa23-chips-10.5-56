@@ -2,6 +2,7 @@
 
 class User < ApplicationRecord
   # Add more Authentication Providers here.
+  has_many :ratings, dependent: :nullify
   enum provider: { google_oauth2: 1, github: 2 }, _prefix: :provider
 
   # Each (uid, provider) pair should be unique.

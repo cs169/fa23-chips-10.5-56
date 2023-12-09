@@ -11,7 +11,8 @@ class Rating < ApplicationRecord
   private
 
   def update_news_item_ratings_sum
-    news_item.update!(ratings_sum: news_item.ratings_sum.to_i + score.to_i)
+    Rails.logger.debug { "22222222222222#{score}" }
+    news_item.update!(rating_sum: news_item.rating_sum.to_i + score.to_i)
   end
 
   def score_not_changed
