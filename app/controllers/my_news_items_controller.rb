@@ -13,7 +13,7 @@ class MyNewsItemsController < SessionController
   def edit; end
 
   def create
-    puts 
+    puts
     @news_item = NewsItem.new(
       title:             params[:title],
       link:              params[:link],
@@ -61,11 +61,11 @@ class MyNewsItemsController < SessionController
         news.issue = @issue
       end
     end
-    if @news_items.empty?
-      flash.now[:error] = 'No news items available related to this issue'
-      render :new
-      return
-    end
+
+    return unless @news_items.empty?
+
+    flash.now[:error] = 'No news items available related to this issue'
+    render :new
   end
 
   # TODO: save selected news article to database

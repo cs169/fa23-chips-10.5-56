@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class NewsItem < ApplicationRecord
   belongs_to :representative
   has_many :ratings, dependent: :delete_all
@@ -28,7 +29,7 @@ class NewsItem < ApplicationRecord
     json = JSON.parse(response.body)
     all_articles = json['articles']
 
-    puts "22222222#{all_articles.length}"
+    Rails.logger.debug { "22222222#{all_articles.length}" }
 
     articles_list = []
     num_articles = all_articles.length
@@ -36,9 +37,9 @@ class NewsItem < ApplicationRecord
     num_articles.times do |index|
       article = all_articles[index]
       article_hash = {
-        title:       article["title"],
-        url:         article["url"],
-        description: article["description"]
+        title:       article['title'],
+        url:         article['url'],
+        description: article['description']
       }
       articles_list[index] = article_hash
     end
