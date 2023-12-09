@@ -3,8 +3,19 @@
 require 'rails_helper'
 
 RSpec.describe Rating, type: :model do
-  let(:user) { User.create!(/* appropriate user attributes */) }
-  let(:news_item) { NewsItem.create!(/* appropriate news item attributes */) }
+  let(:user) do
+        User.create!(provider: 1, uid: '123456', email: 'leahwang61@berkeley.edu', first_name: 'Leah',
+                     last_name: 'Wang')
+      end
+  let!(:news_item) do
+    NewsItem.create!(
+      title:          'Sample News',
+      description:    'Sample Description',
+      link:           'http://example.com',
+      issue:          'Climate Change',
+      representative: representative
+    )
+  end
 
   describe 'associations' do
     it 'belongs to a user' do
