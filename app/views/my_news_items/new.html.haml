@@ -1,7 +1,6 @@
 .row.mt-2
     .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
-        Edit News Item for = link_to @representative.name, representative_path(@representative.id)
-        %br
+        Edit News Item for #{link_to @representative.name, representative_path(@representative.id)}
 
     .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
         = render 'form_search', news_item: @news_item,
