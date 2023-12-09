@@ -15,8 +15,16 @@ class NewsItem < ApplicationRecord
       representative_id: representative_id
     )
   end
-
+  
   validates :issue, presence: true, inclusion: { in: ISSUES_LIST }
+
+  def rating
+    Rails.logger.debug '77777777777777777777777777777777777777'
+    Rails.logger.debug rating_sum
+    return nil if ratings.size.zero?
+
+    rating_sum / ratings.size.to_f
+  end
 
   # returns list of (up to) five articles that match params
   def self.get_articles(rep_name, issue)

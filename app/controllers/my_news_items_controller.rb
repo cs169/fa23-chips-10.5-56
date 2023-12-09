@@ -22,6 +22,8 @@ class MyNewsItemsController < SessionController
       representative_id: @representative.id
     )
     if @news_item.save
+      Rails.logger.debug { "33333333333333#{params}" }
+      @news_item.ratings.create(user: @current_user, score: params[:rating].to_i)
       redirect_to representative_news_item_path(@representative, @news_item),
                   notice: 'News item was successfully created.'
     else
@@ -66,6 +68,16 @@ class MyNewsItemsController < SessionController
 
     flash.now[:error] = 'No news items available related to this issue'
     render :new
+  end
+
+  def create_rating
+    @news_item = NewsItem.find(params[:id])
+    if Rating.exists?(user: @current_user, news_item: @news_item)
+      render json: { error: 'You have already rated this news item' }, status: :unprocessable_entity
+    else
+      @news_item.ratings.create!(user: @current_user, score: params[:rating].to_i)
+      render json: { message: 'Rating created' }, status: :created
+    end
   end
 
   # TODO: save selected news article to database
