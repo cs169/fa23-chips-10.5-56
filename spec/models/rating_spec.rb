@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe Rating, type: :model do
   let!(:representative) { Representative.create!(name: 'John Doe') }
   let(:user) do
-    User.create!(provider: 1, uid: '123456', email: 'leahwang61@berkeley.edu', 
+    User.create!(provider: 1, uid: '123456', email: 'leahwang61@berkeley.edu',
                  first_name: 'Leah', last_name: 'Wang')
   end
   let!(:news_item) do
