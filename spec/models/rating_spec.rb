@@ -7,7 +7,7 @@ RSpec.describe Rating, type: :model do
   let(:user) do
         User.create!(provider: 1, uid: '123456', email: 'leahwang61@berkeley.edu', first_name: 'Leah',
                      last_name: 'Wang')
-      end
+  end
   let!(:news_item) do
     NewsItem.create!(
       title:          'Sample News',
