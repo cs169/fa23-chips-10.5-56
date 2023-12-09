@@ -23,6 +23,9 @@
         %span.description-label Description:
         %span.description= article[:description]
         %br/
+      .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
+          %label{ for: 'rating-dropdown' } Rating:
+          = form.select :rating, options_for_select(rating_options)
 
     = form.hidden_field :title, id: 'hidden_title', value: @news_items[0][:title]
     = form.hidden_field :link, id: 'hidden_link', value: @news_items[0][:link]
