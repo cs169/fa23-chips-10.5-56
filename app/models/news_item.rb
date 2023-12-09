@@ -17,9 +17,11 @@ class NewsItem < ApplicationRecord
   end
 
   def rating
+    Rails.logger.debug '77777777777777777777777777777777777777'
+    Rails.logger.debug rating_sum
     return nil if ratings.size.zero?
 
-    ratings_sum / ratings.size.to_f
+    rating_sum / ratings.size.to_f
   end
 
   # returns list of (up to) five articles that match params

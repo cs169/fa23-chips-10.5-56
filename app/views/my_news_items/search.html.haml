@@ -35,6 +35,7 @@
     = form.hidden_field :description, id: 'hidden_description', value: @news_items[0][:description]
     = form.hidden_field :issue, id: 'hidden_issue', value: @issue
 
+
     .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
       .clearfix.mt-3
         .float-right
@@ -43,3 +44,33 @@
             %i.fas.fa-arrow-right
         .float-left
           = form.submit 'Save', class: 'btn btn-info'
+
+:javascript
+  document.addEventListener('DOMContentLoaded', function () {
+    const articleSelectors = document.querySelectorAll('.article-selector');
+
+    articleSelectors.forEach(function (radioButton) {
+      radioButton.addEventListener('change', function (e) {
+        if (e.target.checked) {
+          const articleDiv = e.target.closest('.article');
+          updateHiddenFields(articleDiv);
+        }
+      });
+    });
+
+    function updateHiddenFields(articleDiv) {
+      const titleElement = articleDiv.querySelector('.title');
+      const linkElement = articleDiv.querySelector('.link');
+      const descriptionElement = articleDiv.querySelector('.description');
+      const hiddenTitleField = document.getElementById('hidden_title');
+      const hiddenLinkField = document.getElementById('hidden_link');
+      const hiddenIssueField = document.getElementById('hidden_issue');
+      const hiddenDescriptionField = document.getElementById('hidden_description');
+
+      hiddenTitleField.value = titleElement.textContent;
+      hiddenLinkField.value = linkElement.href;
+      hiddenIssueField.value = '#{@issue}';
+      hiddenDescriptionField.value = descriptionElement.textContent;
+    }
+  });
+

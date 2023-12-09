@@ -22,6 +22,8 @@ class MyNewsItemsController < SessionController
       representative_id: @representative.id
     )
     if @news_item.save
+      Rails.logger.debug { "33333333333333#{params}" }
+      @news_item.ratings.create(user: @current_user, score: params[:rating].to_i)
       redirect_to representative_news_item_path(@representative, @news_item),
                   notice: 'News item was successfully created.'
     else
