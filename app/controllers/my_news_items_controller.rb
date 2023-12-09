@@ -68,6 +68,16 @@ class MyNewsItemsController < SessionController
     render :new
   end
 
+  def create_rating
+    @news_item = NewsItem.find(params[:id])
+    if Rating.exists?(user: @current_user, news_item: @news_item)
+      render json: { error: 'You have already rated this news item' }, status: :unprocessable_entity
+    else
+      @news_item.ratings.create!(user: @current_user, score: params[:rating].to_i)
+      render json: { message: 'Rating created' }, status: :created
+    end
+  end
+
   # TODO: save selected news article to database
   def save; end
 
