@@ -18,7 +18,7 @@ class NewsItem < ApplicationRecord
 
   # returns list of (up to) five articles that match params
   def self.get_articles(rep_name, issue)
-    q_param = "#{rep_name} AND #{issue}"
+    q_param = "#{rep_name}  #{issue}"
     uri = 'https://newsapi.org/v2/everything?' \
           "q=#{CGI.escape(q_param)}&" \
           'pageSize=5&' \
@@ -29,9 +29,10 @@ class NewsItem < ApplicationRecord
     json = JSON.parse(response.body)
     all_articles = json['articles']
 
-    articles_list = []
-    num_articles = [5, all_articles.length].min
+    Rails.logger.debug { "22222222#{all_articles.length}" }
 
+    articles_list = []
+    num_articles = all_articles.length
     # adds article hash to list of articles
     num_articles.times do |index|
       article = all_articles[index]
@@ -42,7 +43,6 @@ class NewsItem < ApplicationRecord
       }
       articles_list[index] = article_hash
     end
-
     articles_list
   end
 

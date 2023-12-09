@@ -1,37 +1,4 @@
-= form_for news_item, url: form_url, html: { method: form_method } do |f|
-    - if news_item.errors.any?
-        .alert.alert-danger
-            %h2
-                "#{pluralize(news_item.errors.count, 'error')} prohibited this news from being saved:"
-            %ul
-                - news_item.errors.full_messages.each do |message|
-                    %li= message
-
-    .form-group.row
-        Representative:
-        = link_to representative.name, representative_path(representative)
-
-    .form-group.row
-        Issue: #{issue}
-
-    .form-group.row
-        Select an article:
-
-    .form-group.row
-        - if articles.present?
-            - articles.each_with_index do |article, _index|
-                .col-md-12
-                    = radio_button_tag 'article', class: 'form-check-input'
-                    %strong Title:
-                    = article[:title]
-                    %br
-                    %strong Link:
-                    = article[:url]
-                    %br
-                    %strong Description:
-                    = article[:description]
-                    %br
-
-    <!-- todo: fix/implement save button (2.4) -->
+= form_with url: form_url, html: { method: form_method } do |f|
+    = render 'issue_select', issues_list: issues_list
     .actions
-        = f.submit 'Save', class: 'btn btn-primary'
+        = f.submit 'Search', class: 'btn btn-primary'
