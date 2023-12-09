@@ -1,0 +1,5 @@
+.form-group.row
+    .col-sm-2
+        = label :issue, 'Issue', class: 'col-form-label'
+    .col-sm-10
+        = select nil, :issue, issues_list, { include_blank: false }, class: 'form-control'
