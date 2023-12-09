@@ -1,4 +1,4 @@
 = form_with url: form_url, html: { method: form_method } do |f|
-    = render 'issue_select', issues_list: your_issues_list
+    = render 'issue_select', issues_list: issues_list
     .actions
         = f.submit 'Search', class: 'btn btn-primary'
