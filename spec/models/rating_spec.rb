@@ -19,21 +19,23 @@ RSpec.describe Rating, type: :model do
   
   describe 'associations' do
     it 'belongs to a user' do
-      rating = Rating.new(user: user)
+      rating = Rating.new(user: user, news_item: news_item, score: 5)
       expect(rating.user).to eq(user)
     end
 
     it 'belongs to a news item' do
-      rating = Rating.new(news_item: news_item)
+      rating = Rating.new(user: user, news_item: news_item, score: 5)
       expect(rating.news_item).to eq(news_item)
     end
   end
 
   describe 'validations' do
-    it 'is invalid if the score changes after creation' do
-      rating = Rating.create!(user: user, news_item: news_item, score: 5)
-      rating.score = 4
-      expect { rating.save! }.to raise_error(ActiveRecord::RecordInvalid)
+    context 'when the rating is persisted' do
+      it 'is invalid if the score changes' do
+        rating = Rating.create!(user: user, news_item: news_item, score: 5)
+        rating.score = 4
+        expect { rating.save! }.to raise_error(ActiveRecord::RecordInvalid)
+      end
     end
   end
 
@@ -41,8 +43,7 @@ RSpec.describe Rating, type: :model do
     it 'updates the news_item rating_sum after create' do
       rating_sum_before = news_item.rating_sum.to_i
       Rating.create!(user: user, news_item: news_item, score: 5)
-      news_item.reload # reload the news_item to get the updated value from the database
-      expect(news_item.rating_sum).to eq(rating_sum_before + 5)
+      expect(news_item.reload.rating_sum).to eq(rating_sum_before + 5)
     end
   end
 end
