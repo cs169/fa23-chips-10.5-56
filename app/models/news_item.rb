@@ -16,6 +16,12 @@ class NewsItem < ApplicationRecord
     )
   end
 
+  def rating
+    return nil if ratings.size.zero?
+
+    ratings_sum / ratings.size.to_f
+  end
+
   # returns list of (up to) five articles that match params
   def self.get_articles(rep_name, issue)
     q_param = "#{rep_name}  #{issue}"
