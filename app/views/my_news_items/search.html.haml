@@ -1,18 +1,45 @@
+- rating_options = [['5 stars', 5], ['4 stars', 4], ['3 stars', 3], ['2 stars', 2], ['1 star', 1]]
+
 .row.mt-2
     .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
-        %h1.text-center Edit News Item
-
+        %h1.text-center
+            Edit news article for
+            = link_to @representative.name, representative_path(@representative.id)
     .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
-        = render 'form_search', news_item: @news_item,
-        form_url: representative_search_my_news_item_path(@representative),
-        form_method: :put,
-        issue: @issue,
-        articles: @articles,
-        representative: @representative
+        %b Issue:
+        = @issue
+        %br/
+        %br/
 
-    .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
-        .clearfix.mt-3
-            .float-right
-                = link_to representative_news_items_path(@representative), class: 'btn btn-info' do
-                    View news articles
-                    %i.fas.fa-arrow-right
+    = form_with(url: representative_my_news_item_new_path(@representative), local: true) do |form|
+        - @news_items.each_with_index do |article, index|
+            .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4.article
+                %label
+                    = form.radio_button :selected_article, index, class: 'article-selector', checked: index.zero?
+                    %b Title:
+                    %span.title= article[:title]
+                    %br/
+                    %b Link:
+                    %a.link{ href: article[:link], target: '_blank' }= article[:link]
+                    %br/
+                    %b Description:
+                    %span.description= article[:description]
+                    %br/
+
+        = form.hidden_field :title, id: 'hidden_title', value: @news_items[0][:title]
+        = form.hidden_field :link, id: 'hidden_link', value: @news_items[0][:link]
+        = form.hidden_field :description, id: 'hidden_description', value: @news_items[0][:description]
+        = form.hidden_field :issue, id: 'hidden_issue', value: @issue
+
+        .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
+            %label{ for: 'rating-dropdown' } Rating:
+            = form.select :rating, options_for_select(rating_options)
+
+        .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
+            .clearfix.mt-3
+                .float-right
+                    = link_to representative_news_items_path(@representative), class: 'btn btn-info' do
+                        View news articles
+                        %i.fas.fa-arrow-right
+                .float-left
+                    = form.submit 'Save', class: 'btn btn-info'
