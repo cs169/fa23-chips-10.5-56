@@ -28,6 +28,7 @@ class NewsItem < ApplicationRecord
     response = Faraday.get(uri)
     json = JSON.parse(response.body)
     all_articles = json['articles']
+    puts "#{all_articles}"
 
     articles_list = []
     num_articles = [5, all_articles.length].min

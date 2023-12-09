@@ -44,7 +44,7 @@ class MyNewsItemsController < SessionController
     @representative = Representative.find(params[:representative_id])
     @issue = params[:issue]
     @articles = NewsItem.get_articles(@representative.name, @issue)
-    puts "#{@articles}"
+    
     @news_items = @articles.map do |article|
       NewsItem.new do |news|
         news.title = article[:title]
